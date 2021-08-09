@@ -1,30 +1,18 @@
 const Aoijs = require("aoi.js");
-
 const bot = new Aoijs.Bot({
-  mobile: false, // you can change it to "true" if you want a mobile status
-  token: process.env.TOKEN, // change TOKEN with your bot token
+  token: process.env.TOKEN,
   prefix: ["$getServerVar[prefix]", "<@!$clientID>", "<@$clientID>"],
-  autoUpdate: "true", // you may change the bot's main prefix in vars.js
+  autoUpdate: true,
 });
 
-bot.onMessage({
-  guildOnly: false // commands will work in dms. set "true" for commands to work in guilds only
-});
-
+bot.onMessage()
+bot.loadCommands("./commands/");
 bot.status({
-  text: `c?help | $serverCount Servers`, // put any text
-  type: "LISTENING", // LISTENING, PLAYING, WATCHING, COMPETING
-  status: "online", // online, dnd, idle, invisible
-  time: 75 // amount of times where you can change the bot status (if have multiple statuses)
+  text: `c?help | $serverCount Servers`, 
+  type: "LISTENING", 
+  status: "online", 
+  time: 75
 });
-
-// FOR STREAMING STATUS USE THIS
-// bot.status({
-// text: "text",
-// type: "STREAMING",
-// url: "enter url/link"
-//   })
-// remove `//` in each side
 
 bot.musicStartCommand({
   channel: "$channelID",
@@ -114,26 +102,24 @@ $textsplit[$getservervar[ccmd];/] 
 
 bot.variables({
   prefix: "c?",
-  Money: "0",
-  Bank: "0",
-  Phone: "0",
-  Cookie: "0",
-  Pizza: "0",
-  Bronze: "0",
-  Platinum: "0",
-  Gold: "0",
-  Silver: "0",
-  SpaceCoin: "0",
-  SpaceTro: "0",
-  premium: "false",
-  antilink: "false",
-  Utm: "0",
-  guess_the_number_channel: "0",
-  winning_number: "0",
+  Money: 0,
+  Bank: 0,
+  Phone: 0,
+  Cookie: 0,
+  Pizza: 0,
+  Bronze: 0,
+  Platinum: 0,
+  Gold: 0,
+  Silver: 0,
+  SpaceCoin: 0,
+  SpaceTro: 0,
+  premium: false,
+  antilink: false,
+  Utm: 0,
+  guess_the_number_channel: 0,
+  winning_number: 0,
   muted: "",
-  Rob: "false",
+  Rob: false,
   ccmd: "",
   cdes: "",
 });
-
-bot.loadCommands("./commands/");
